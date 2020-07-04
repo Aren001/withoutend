@@ -20,7 +20,7 @@ const Font = () => {
                         <span className={t.fastflicker}>Go</span>od {`" "`}<span className={t.flicker}>da</span>y!
                     </div> */}
 					
-					<video onClick={() => Vol()}  autoPlay={true}  loop={true} type="video/mp4" >
+					<video onClick={() => Vol()}  autoPlay={true}  loop={true} type="video/mp4" autoPlay >
                         <source className={s.sources} src={fonts} type="video/mp4" />
                     </video>
 				</div>
