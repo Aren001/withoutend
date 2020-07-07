@@ -1,6 +1,6 @@
 import React , { useEffect , useState } from 'react';
 import s from './form.module.css';
-// import axios from 'axios';
+import * as emailjs from 'emailjs-com';
 
 
 // Translation Higher Order Component
@@ -68,51 +68,41 @@ const Form = (props) => {
         e.preventDefault();
      
        
-        // let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-        // let mobileno = new RegExp(/^[0-9]{9}$/);
-        // let nameLastnameReg = new RegExp(/^[a-zA-Z ]*$/);
-        // let data = {
-        //     name:values.name,
-        //     lastname: values.lastname,
-        //     mobile: values.mobile,
-        //     email: values.email,
-        //     message: values.message
-        // };
-        // if(!values.name.match(nameLastnameReg) || values.name.length == 0) {
-        //     setNameError((`mapInfo.${obj1.id}.nameError`))
-        // }else {
-        //     setNameError("")
-        // };
+        let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        let mobileno = new RegExp(/^[0-9]{9}$/);
+        let nameLastnameReg = new RegExp(/^[a-zA-Z ]*$/);
         
-        // if(!values.lastname.match(nameLastnameReg) || values.lastname.length == 0) {
-        //     setLastnameError((`mapInfo.${obj1.id}.lastnameError`))
-        // }else {
-        //     setLastnameError('')
-        // }
-        // if(!values.mobile.match(mobileno)) {
-        //     setMobileError((`mapInfo.${obj1.id}.mobileError`))
-        // }else {
-        //     setMobileError("")
-        // }
-        // if(!values.email.match(pattern)) {
-        //     setEmailError((`mapInfo.${obj1.id}.emailError`))
-        // }else {
-        //     setEmailError("")
-        // }  
+        if(!values.name.match(nameLastnameReg) || values.name.length == 0) {
+            setNameError((`mapInfo.${obj1.id}.nameError`))
+        }else {
+            setNameError("")
+        };
+        
+        if(!values.lastname.match(nameLastnameReg) || values.lastname.length == 0) {
+            setLastnameError((`mapInfo.${obj1.id}.lastnameError`))
+        }else {
+            setLastnameError('')
+        }
+        if(!values.mobile.match(mobileno)) {
+            setMobileError((`mapInfo.${obj1.id}.mobileError`))
+        }else {
+            setMobileError("")
+        }
+        if(!values.email.match(pattern)) {
+            setEmailError((`mapInfo.${obj1.id}.emailError`))
+        }else {
+            setEmailError("")
+        }  
 
-        // if(values.name.match(nameLastnameReg) && values.name.length > 0 && values.lastname.length > 0 && values.lastname.match(nameLastnameReg) && values.mobile.match(mobileno) && values.email.match(pattern)) {
-        // axios.post('/api/forma', data)
-        //     .then(res => {
-
-        //         setSent(true);
-        //         resetForm();
-                
-        //     }).catch(() => {
-        //         console.log("message not sent!!!");
-        //     })
-        // }else {
-        //     return false;
-        // };
+        if(values.name.match(nameLastnameReg) && values.name.length > 0 && values.lastname.length > 0 && values.lastname.match(nameLastnameReg) && values.mobile.match(mobileno) && values.email.match(pattern)) {
+            emailjs
+            .sendForm(
+                "mail_ru",
+                "sendmessage",
+                ".contact_form_class",
+                "user_XNRgv3wQysDc5QzFXjDxj"
+            ).then().catch();
+        }
         resetForm();
     }
 
@@ -142,7 +132,7 @@ const Form = (props) => {
 
     return (
         <div className={s.container}>
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit} className='contact_form_class' >
                 <div className="sigle">
                     <label htmlFor="name" className={s.label}> {t(`mapInfo.${obj1.id}.name`)}</label>
                     <br />
