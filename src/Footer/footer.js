@@ -158,7 +158,7 @@ const Footer = (props) => {
   
 
 
-  <div className="footer-copyright text-center py-3">© 2020 SevanInfo: <hr/>  {obj.watch} :-: {t('foother.watchNumber')}
+  <div className="footer-copyright text-center py-3">© 2020 SevanInfo: <hr/>   :-: {t('foother.watchNumber')}
 	
   </div>
 	  
