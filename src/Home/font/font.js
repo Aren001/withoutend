@@ -16,13 +16,10 @@ const Font = () => {
 						<h1  >WELCOME TO SEVAN</h1>
 					</div>
 
-                    {/* <div className={t.sign}>
-                        <span className={t.fastflicker}>Go</span>od {`" "`}<span className={t.flicker}>da</span>y!
-                    </div> */}
+                    <video onClick={() => Vol()} src={fonts} playsInline autoPlay loop muted></video>
+                    
 					
-					<video onClick={() => Vol()}  autoPlay={true}  loop={true} type="video/mp4" autoPlay >
-                        <source className={s.sources} src={fonts} type="video/mp4" />
-                    </video>
+					
 				</div>
                 
         </div>
